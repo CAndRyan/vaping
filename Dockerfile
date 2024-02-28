@@ -21,7 +21,7 @@ ARG vaping_extras=all
 
 ARG poetry_pin=">=1,<=2"
 
-FROM python:3.11-alpine as base
+FROM python:3.9.17-alpine as base
 
 ARG runtime_packages
 ARG virtual_env=/venv

@@ -51,7 +51,13 @@ Then, start the `vaping` program from the command line, specifying the path to t
 
 A quick start example is [available here](https://vaping.readthedocs.io/en/stable/quickstart/). It shows you how to ping multiple hosts and display the resulting graphs using a local web server.
 
-If using the `standalone_dns-whisper` example config, or other configuration using the whisper plugin, the database file can be read from the console with `whisper-fetch.py latency-8.8.8.8-avg.wsp` -- where a `*.wsp` file corresponds to each host being pinged.
+If using the `standalone_dns-whisper` example config, or other configuration using the whisper plugin, the database file can be read from the console with `whisper-fetch.py latency-8.8.8.8-avg.wsp` -- where a `*.wsp` file corresponds to each host being pinged. The output can be piped to a file for easy export: `whisper-fetch.py latency-8.8.8.8-avg.wsp >out-file.csv`.
+
+The whisper output can be handled in PowerShell:
+```powershell
+$data = Import-Csv C:\Users\cryan\Downloads\test.csv -Delimiter `t -Header Stamp, Latency |select -ExpandProperty Latency
+$cnt = 0; $points = $data |% { $y = $_.Trim() -eq 'None' ? 0 : $_; $obj = New-Object PSCustomObject -Property @{ x = $cnt * 3; y = $y }; $cnt++; return $obj; }
+```
 
 ## Usage
 

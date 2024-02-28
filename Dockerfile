@@ -44,6 +44,8 @@ RUN pip install --upgrade pip wheel
 # alpine package is currently only in edge
 RUN pip install "poetry$poetry_pin"
 
+RUN pip install --no-binary=:all: https://github.com/graphite-project/whisper/tarball/master
+
 # Create a VENV
 RUN python3 -m venv "$VIRTUAL_ENV"
 
@@ -108,7 +110,7 @@ RUN chown vaping:vaping /vaping
 
 USER vaping
 COPY --chown=vaping:vaping examples examples
-COPY --chown=vaping:vaping examples/standalone_dns/config.yml .
+COPY --chown=vaping:vaping examples/standalone_dns-whisper/config.yml .
 
 EXPOSE 7021
 

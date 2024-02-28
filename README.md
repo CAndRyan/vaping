@@ -40,7 +40,7 @@ You will need a compiler and Python development libraries for some components, w
 Alternatively, you can use the [Docker image](Dockerfile), which includes all requirements.
 
 To create an image, use `docker build -t vaping/v0.1 .`, replacing the name after `-t` as desired.
-To create a container, use `docker run -p 7021:7021 vaping/v0.1` to expose the port to the local machine.
+To create a container, use `docker run --name vaping -p 7021:7021 vaping/v0.1` to expose the port to the local machine, replacing the name as desired. Use `docker run` with same args to also start the container with logging to local console. If explicitly creating the container first, run with `docker start vaping`.
 To access, navigate to `http://localhost:7021`
 
 ## Quick Start

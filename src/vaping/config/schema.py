@@ -1,4 +1,4 @@
-import confu.exceptions
+# import confu.exceptions
 import confu.generator
 import confu.schema
 
